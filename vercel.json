@@ -1,16 +1,19 @@
 {
-  "version": 2,
-  "functions": {
-    "api/index.php": { "runtime": "vercel-php@0.7.1" }
-  },
+  "builds": [
+    {
+      "src": "index.php",
+      "use": "@vercel/php",
+      "config": {
+        "zeroConfig": true,
+        "maxLambdaSize": "50mb",
+        "runtime": "vercel-php@0.6.0"
+      }
+    }
+  ],
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/api/$1"
+      "dest": "/index.php"
     }
   ]
 }
